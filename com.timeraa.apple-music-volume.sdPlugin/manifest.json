@@ -3,7 +3,7 @@
   "UUID": "com.timeraa.apple-music-volume",
   "Name": "Apple Music",
   "Version": "1.0.0.0",
-  "Author": "timeraa",
+  "Author": "Timeraa",
   "Description": "Control Apple Music from your Stream Deck: volume, play/pause, next/previous, like, shuffle and repeat. Rotate a dial to adjust volume, or use keys for everything else.",
   "Category": "Apple Music",
   "CategoryIcon": "imgs/plugin/category-icon",
@@ -30,10 +30,7 @@
       "Icon": "imgs/actions/volume/icon",
       "Tooltip": "Adjust Apple Music volume or mute. On a dial: rotate to adjust, press to mute. On a key: choose raise, lower or mute.",
       "PropertyInspectorPath": "ui/volume.html",
-      "Controllers": [
-        "Keypad",
-        "Encoder"
-      ],
+      "Controllers": ["Keypad", "Encoder"],
       "DisableAutomaticStates": true,
       "Encoder": {
         "layout": "$B1",
@@ -62,9 +59,7 @@
       "UUID": "com.timeraa.apple-music-volume.playpause",
       "Icon": "imgs/playback/play",
       "Tooltip": "Toggle play / pause in Apple Music.",
-      "Controllers": [
-        "Keypad"
-      ],
+      "Controllers": ["Keypad"],
       "PropertyInspectorPath": "ui/play.html",
       "DisableAutomaticStates": true,
       "States": [
@@ -83,9 +78,7 @@
       "UUID": "com.timeraa.apple-music-volume.next",
       "Icon": "imgs/playback/next",
       "Tooltip": "Skip to the next track.",
-      "Controllers": [
-        "Keypad"
-      ],
+      "Controllers": ["Keypad"],
       "States": [
         {
           "Image": "imgs/playback/next"
@@ -97,9 +90,7 @@
       "UUID": "com.timeraa.apple-music-volume.previous",
       "Icon": "imgs/playback/prev",
       "Tooltip": "Return to the previous track.",
-      "Controllers": [
-        "Keypad"
-      ],
+      "Controllers": ["Keypad"],
       "States": [
         {
           "Image": "imgs/playback/prev"
@@ -111,9 +102,7 @@
       "UUID": "com.timeraa.apple-music-volume.like",
       "Icon": "imgs/playback/heart",
       "Tooltip": "Favorite / unfavorite the current track.",
-      "Controllers": [
-        "Keypad"
-      ],
+      "Controllers": ["Keypad"],
       "DisableAutomaticStates": true,
       "States": [
         {
@@ -131,9 +120,7 @@
       "UUID": "com.timeraa.apple-music-volume.shuffle",
       "Icon": "imgs/playback/shuffle-off",
       "Tooltip": "Toggle shuffle.",
-      "Controllers": [
-        "Keypad"
-      ],
+      "Controllers": ["Keypad"],
       "DisableAutomaticStates": true,
       "States": [
         {
@@ -151,9 +138,7 @@
       "UUID": "com.timeraa.apple-music-volume.repeat",
       "Icon": "imgs/playback/repeat-off",
       "Tooltip": "Cycle repeat: off, all, one.",
-      "Controllers": [
-        "Keypad"
-      ],
+      "Controllers": ["Keypad"],
       "DisableAutomaticStates": true,
       "States": [
         {

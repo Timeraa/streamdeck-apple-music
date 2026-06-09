@@ -71,20 +71,20 @@ Stream Deck app ──WebSocket──> bin/plugin.js  (Node, @elgato/streamdeck)
 
 Commands:
 
-| Command | Meaning |
-| --- | --- |
-| `v <0-100>` | set sound volume |
-| `m` / `m 1` / `m 0` | toggle / force mute |
-| `g` | query volume state |
-| `pp` | play / pause toggle |
-| `next` / `prev` | skip / previous track |
-| `love` / `love 1` / `love 0` | toggle / force favorite on the current track |
-| `shuffle` / `shuffle 1` / `shuffle 0` | toggle / force shuffle |
-| `repeat` / `repeat 0\|1\|2` | cycle / set repeat (0 off, 1 all, 2 one) |
-| `s` | query full playback status |
-| `art` | reply `art <trackId> <base64png>` (144px) or `art <trackId> none` |
-| `meta` | reply `meta <trackId> <name>\t<artist>\t<album>` or `meta <trackId> none` |
-| `appicon` / `appicon muted` | reply `appicon <0\|1> <base64png>` (144px, the live Music.app icon) or `appicon <0\|1> none` |
+| Command                               | Meaning                                                                                      |
+| ------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `v <0-100>`                           | set sound volume                                                                             |
+| `m` / `m 1` / `m 0`                   | toggle / force mute                                                                          |
+| `g`                                   | query volume state                                                                           |
+| `pp`                                  | play / pause toggle                                                                          |
+| `next` / `prev`                       | skip / previous track                                                                        |
+| `love` / `love 1` / `love 0`          | toggle / force favorite on the current track                                                 |
+| `shuffle` / `shuffle 1` / `shuffle 0` | toggle / force shuffle                                                                       |
+| `repeat` / `repeat 0\|1\|2`           | cycle / set repeat (0 off, 1 all, 2 one)                                                     |
+| `s`                                   | query full playback status                                                                   |
+| `art`                                 | reply `art <trackId> <base64png>` (144px) or `art <trackId> none`                            |
+| `meta`                                | reply `meta <trackId> <name>\t<artist>\t<album>` or `meta <trackId> none`                    |
+| `appicon` / `appicon muted`           | reply `appicon <0\|1> <base64png>` (144px, the live Music.app icon) or `appicon <0\|1> none` |
 
 Replies:
 
@@ -149,4 +149,4 @@ Xcode, both preinstalled):
 
 ## License
 
-[MIT](./LICENSE) © timeraa.
+[MIT](./LICENSE) © Timeraa.

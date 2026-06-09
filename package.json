@@ -1,9 +1,11 @@
 {
   "name": "streamdeck-apple-music",
   "version": "1.0.0",
-  "description": "Stream Deck + dial control for Apple Music output volume on macOS",
-  "type": "module",
   "private": true,
+  "description": "Stream Deck + dial control for Apple Music output volume on macOS",
+  "license": "MIT",
+  "author": "Timeraa",
+  "type": "module",
   "scripts": {
     "build": "vp pack",
     "watch": "vp pack --watch --on-success \"streamdeck restart com.timeraa.apple-music-volume\"",
@@ -14,16 +16,14 @@
     "format": "vp fmt src",
     "check": "vp fmt src && vp lint src && tsc --noEmit"
   },
-  "author": "timeraa",
-  "license": "MIT",
+  "dependencies": {
+    "@elgato/streamdeck": "^1.0.0"
+  },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.4",
     "@types/node": "^20.19.42",
     "typescript": "^5.6.3",
     "vite-plus": "^0.1.24"
-  },
-  "dependencies": {
-    "@elgato/streamdeck": "^1.0.0"
   },
   "packageManager": "npm@11.16.0"
 }
