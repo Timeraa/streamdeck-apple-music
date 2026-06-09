@@ -1,0 +1,9 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/main/npm/oxlint/configuration_schema.json",
+  "ignorePatterns": [
+    "com.timeraa.apple-music-volume.sdPlugin/bin/**",
+    "com.timeraa.apple-music-volume.sdPlugin/ui/sdpi-components.js",
+    "native/.build/**",
+    "dist/**"
+  ]
+}

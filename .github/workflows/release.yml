@@ -1,0 +1,84 @@
+name: Build & Release
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+
+# Needed for softprops/action-gh-release to create the GitHub Release on a tag.
+permissions:
+  contents: write
+
+jobs:
+  build:
+    # macOS is required: the helper is a universal Swift binary (swiftc + lipo)
+    # and Xcode is preinstalled on the GitHub-hosted macOS runner.
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build plugin bundle
+        run: npm run build
+
+      - name: Build native helper (universal binary)
+        run: npm run build:native
+
+      # Icons are committed original art — CI never regenerates them and needs no
+      # Music.app (the genuine icon is fetched at runtime on the user's machine).
+      - name: Install Elgato CLI
+        run: npm i -g @elgato/cli
+
+      - name: Validate plugin
+        run: streamdeck validate com.timeraa.apple-music-volume.sdPlugin
+
+      # --- release (tags only) ---------------------------------------------
+
+      - name: Derive package version
+        id: version
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          # Pass the tag through the environment (never inline ${{ }} into run:)
+          # since git tag names may contain shell metacharacters.
+          TAG: ${{ github.ref_name }}
+        run: |
+          # Stream Deck wants a 4-part version; map the SemVer tag v1.2.3 -> 1.2.3.0
+          ver="${TAG#v}.0"
+          if [[ ! "$ver" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.0$ ]]; then
+            echo "::error::Tag '$TAG' must be vMAJOR.MINOR.PATCH (e.g. v1.2.3)" >&2
+            exit 1
+          fi
+          echo "value=$ver" >> "$GITHUB_OUTPUT"
+
+      - name: Pack .streamDeckPlugin
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          VERSION: ${{ steps.version.outputs.value }}
+        run: >-
+          streamdeck pack com.timeraa.apple-music-volume.sdPlugin
+          -o dist -f --version "$VERSION"
+
+      - name: Upload package artifact
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: actions/upload-artifact@v4
+        with:
+          name: streamDeckPlugin
+          path: dist/*.streamDeckPlugin
+
+      - name: Publish GitHub Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.streamDeckPlugin
+          generate_release_notes: true

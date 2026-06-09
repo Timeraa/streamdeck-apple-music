@@ -1,0 +1,19 @@
+node_modules/
+native/.build/
+dist/
+*.log
+com.timeraa.apple-music-volume.sdPlugin/logs/
+
+# macOS / editor cruft
+.DS_Store
+
+# claude-mem per-directory context stubs
+CLAUDE.md
+
+# Agent tooling
+.serena/
+
+# Build outputs (produced by `npm run build` / `npm run build:native`)
+com.timeraa.apple-music-volume.sdPlugin/bin/plugin.js
+com.timeraa.apple-music-volume.sdPlugin/bin/plugin.js.map
+com.timeraa.apple-music-volume.sdPlugin/bin/music-volume

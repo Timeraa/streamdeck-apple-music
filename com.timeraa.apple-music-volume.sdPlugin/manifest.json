@@ -1,0 +1,174 @@
+{
+  "$schema": "https://schemas.elgato.com/streamdeck/plugins/manifest.json",
+  "UUID": "com.timeraa.apple-music-volume",
+  "Name": "Apple Music",
+  "Version": "1.0.0.0",
+  "Author": "timeraa",
+  "Description": "Control Apple Music from your Stream Deck: volume, play/pause, next/previous, like, shuffle and repeat. Rotate a dial to adjust volume, or use keys for everything else.",
+  "Category": "Apple Music",
+  "CategoryIcon": "imgs/plugin/category-icon",
+  "Icon": "imgs/plugin/category-icon",
+  "SDKVersion": 2,
+  "Software": {
+    "MinimumVersion": "6.6"
+  },
+  "OS": [
+    {
+      "Platform": "mac",
+      "MinimumVersion": "12"
+    }
+  ],
+  "Nodejs": {
+    "Version": "20",
+    "Debug": "enabled"
+  },
+  "CodePath": "bin/plugin.js",
+  "Actions": [
+    {
+      "Name": "Volume",
+      "UUID": "com.timeraa.apple-music-volume.volume",
+      "Icon": "imgs/actions/volume/icon",
+      "Tooltip": "Adjust Apple Music volume or mute. On a dial: rotate to adjust, press to mute. On a key: choose raise, lower or mute.",
+      "PropertyInspectorPath": "ui/volume.html",
+      "Controllers": [
+        "Keypad",
+        "Encoder"
+      ],
+      "DisableAutomaticStates": true,
+      "Encoder": {
+        "layout": "$B1",
+        "Icon": "imgs/actions/volume/icon",
+        "TriggerDescription": {
+          "Rotate": "Adjust volume",
+          "Push": "Mute / unmute",
+          "Touch": "Mute / unmute"
+        }
+      },
+      "States": [
+        {
+          "Image": "imgs/playback/mute",
+          "TitleAlignment": "bottom",
+          "Name": "Sound"
+        },
+        {
+          "Image": "imgs/playback/mute-on",
+          "TitleAlignment": "bottom",
+          "Name": "Muted"
+        }
+      ]
+    },
+    {
+      "Name": "Play / Pause",
+      "UUID": "com.timeraa.apple-music-volume.playpause",
+      "Icon": "imgs/playback/play",
+      "Tooltip": "Toggle play / pause in Apple Music.",
+      "Controllers": [
+        "Keypad"
+      ],
+      "PropertyInspectorPath": "ui/play.html",
+      "DisableAutomaticStates": true,
+      "States": [
+        {
+          "Image": "imgs/playback/play",
+          "Name": "Play"
+        },
+        {
+          "Image": "imgs/playback/pause",
+          "Name": "Pause"
+        }
+      ]
+    },
+    {
+      "Name": "Next Track",
+      "UUID": "com.timeraa.apple-music-volume.next",
+      "Icon": "imgs/playback/next",
+      "Tooltip": "Skip to the next track.",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/playback/next"
+        }
+      ]
+    },
+    {
+      "Name": "Previous Track",
+      "UUID": "com.timeraa.apple-music-volume.previous",
+      "Icon": "imgs/playback/prev",
+      "Tooltip": "Return to the previous track.",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/playback/prev"
+        }
+      ]
+    },
+    {
+      "Name": "Like",
+      "UUID": "com.timeraa.apple-music-volume.like",
+      "Icon": "imgs/playback/heart",
+      "Tooltip": "Favorite / unfavorite the current track.",
+      "Controllers": [
+        "Keypad"
+      ],
+      "DisableAutomaticStates": true,
+      "States": [
+        {
+          "Image": "imgs/playback/heart",
+          "Name": "Not loved"
+        },
+        {
+          "Image": "imgs/playback/heart-fill",
+          "Name": "Loved"
+        }
+      ]
+    },
+    {
+      "Name": "Shuffle",
+      "UUID": "com.timeraa.apple-music-volume.shuffle",
+      "Icon": "imgs/playback/shuffle-off",
+      "Tooltip": "Toggle shuffle.",
+      "Controllers": [
+        "Keypad"
+      ],
+      "DisableAutomaticStates": true,
+      "States": [
+        {
+          "Image": "imgs/playback/shuffle-off",
+          "Name": "Off"
+        },
+        {
+          "Image": "imgs/playback/shuffle-on",
+          "Name": "On"
+        }
+      ]
+    },
+    {
+      "Name": "Repeat",
+      "UUID": "com.timeraa.apple-music-volume.repeat",
+      "Icon": "imgs/playback/repeat-off",
+      "Tooltip": "Cycle repeat: off, all, one.",
+      "Controllers": [
+        "Keypad"
+      ],
+      "DisableAutomaticStates": true,
+      "States": [
+        {
+          "Image": "imgs/playback/repeat-off",
+          "Name": "Off"
+        },
+        {
+          "Image": "imgs/playback/repeat-all",
+          "Name": "All"
+        },
+        {
+          "Image": "imgs/playback/repeat-one",
+          "Name": "One"
+        }
+      ]
+    }
+  ]
+}

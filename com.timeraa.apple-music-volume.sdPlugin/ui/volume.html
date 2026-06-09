@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="sdpi-components.js"></script>
+  </head>
+  <body>
+    <sdpi-item label="Action" id="mode-item">
+      <sdpi-select setting="mode" default="up">
+        <option value="up">Volume Up</option>
+        <option value="down">Volume Down</option>
+        <option value="mute">Mute</option>
+      </sdpi-select>
+    </sdpi-item>
+    <sdpi-item label="Step per press" id="step-item">
+      <sdpi-range setting="step" min="1" max="25" default="5" step="1" showlabels></sdpi-range>
+    </sdpi-item>
+
+    <script>
+      // A single Volume action serves both the dial (Encoder) and keys (Keypad).
+      // Hide the per-key mode picker on the dial, where rotate = volume and
+      // press = mute, and relabel the step to match.
+      (async () => {
+        const info = await window.SDPIComponents.streamDeckClient.getConnectionInfo();
+        const controller = info?.actionInfo?.payload?.controller;
+        if (controller === "Encoder") {
+          document.getElementById("mode-item").style.display = "none";
+          document.getElementById("step-item").setAttribute("label", "Step per tick");
+        }
+      })();
+    </script>
+  </body>
+</html>
